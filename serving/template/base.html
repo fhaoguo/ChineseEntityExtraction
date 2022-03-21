@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>知识抽取</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>---知识抽取系统中文实体抽取演示页面---</h1>
+        <div class="form-group" id="content-form">
+            <form action="/entity" method="post">
+                <textarea class="form-control" rows="10" name="content"></textarea>
+                <button class="form-control" type="submit">抽取实体</button>
+            </form>
+        </div>
+        <div>
+            <h2>抽取结果</h2>
+            <hr>
+            <div id="per-entities">
+                <strong>人名：</strong>
+                <ol>
+                    {% for item in per %}
+                    <li>{{item}}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div id="loc-entities">
+                <strong>地名(国家)：</strong>
+                <ol>
+                    {% for item in loc %}
+                    <li>{{item}}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div id="org-entities">
+                <strong>组织机构：</strong>
+                <ol>
+                    {% for item in org %}
+                    <li>{{item}}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div id="raw-content">
+            <h2>输入内容：</h2>
+            <hr>
+            <p>{{content}}</p>
+        </div>
+    </div>
+</body>
+</html>
